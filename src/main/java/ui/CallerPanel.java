@@ -2,97 +2,164 @@ package ui;
 
 import dao.CallerDAO;
 import model.Caller;
+import util.DatabaseUtil;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Vector;
-import javax.swing.table.DefaultTableModel;
-
 
 public class CallerPanel extends JPanel {
-    private CallerDAO callerDAO;
-    private JTable callerTable;
-    private DefaultTableModel tableModel;
+    private CallerDAO callerDAO = new CallerDAO();
+    private JTable table;
+    private DefaultTableModel model;
 
     public CallerPanel() {
+        setLayout(new BorderLayout());
         callerDAO = new CallerDAO();
         initializeUI();
         loadData();
     }
 
     private void initializeUI() {
-        setLayout(new BorderLayout());
+        model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"ID", "Name", "Department", "Contact Info", "Address", "Account Number"});
+        table = new JTable(model);
+        add(new JScrollPane(table), BorderLayout.CENTER);
 
-        tableModel = new DefaultTableModel();
-        tableModel.setColumnIdentifiers(new String[]{"ID", "Name", "Department", "Contact Info", "Address", "Account Number"});
-        callerTable = new JTable(tableModel);
-        add(new JScrollPane(callerTable), BorderLayout.CENTER);
-
-        JPanel buttonsPanel = new JPanel();
-        JButton addButton = new JButton("Add");
-        JButton updateButton = new JButton("Update");
-        JButton deleteButton = new JButton("Delete");
+        JPanel buttonPanel = new JPanel();
+        JButton addButton = new JButton("Add User");
+        JButton viewButton = new JButton("View Users");
+        JButton updateButton = new JButton("Update User");
+        JButton deleteButton = new JButton("Delete User");
 
         addButton.addActionListener(this::addCallerAction);
+        viewButton.addActionListener(e -> loadData());
         updateButton.addActionListener(this::updateCallerAction);
         deleteButton.addActionListener(this::deleteCallerAction);
 
-        buttonsPanel.add(addButton);
-        buttonsPanel.add(updateButton);
-        buttonsPanel.add(deleteButton);
-        add(buttonsPanel, BorderLayout.SOUTH);
+        buttonPanel.add(addButton);
+        buttonPanel.add(viewButton);
+        buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton);
+
+        add(buttonPanel, BorderLayout.SOUTH);
     }
 
     private void loadData() {
         try {
             List<Caller> callers = callerDAO.getAllCallers();
-            tableModel.setRowCount(0); // Clear table
+            model.setRowCount(0); // Clear existing content
             for (Caller caller : callers) {
-                Vector<Object> row = new Vector<>();
-                row.add(caller.getCallerId());
-                row.add(caller.getName());
-                row.add(caller.getDepartment());
-                row.add(caller.getContactInfo());
-                row.add(caller.getAddress());
-                row.add(caller.getAccountNumber());
-                tableModel.addRow(row);
+                model.addRow(new Object[]{
+                        caller.getCallerId(), caller.getName(), caller.getDepartment(),
+                        caller.getContactInfo(), caller.getAddress(), caller.getAccountNumber()
+                });
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error loading callers: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error loading data: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void addCallerAction(ActionEvent event) {
-        // Your implementation for adding a new caller
-        // After adding, call loadData to refresh the table
-    }
+    private void addCallerAction(ActionEvent e) {
+        JTextField nameField = new JTextField();
+        JTextField departmentField = new JTextField();
+        JTextField contactInfoField = new JTextField();
+        JTextField addressField = new JTextField();
+        JTextField accountNumberField = new JTextField();
 
-    private void updateCallerAction(ActionEvent event) {
-        int selectedRow = callerTable.getSelectedRow();
-        if (selectedRow >= 0) {
-            Integer callerId = (Integer) tableModel.getValueAt(selectedRow, 0);
-            // Fetch caller from the database by ID and populate the update dialog
-            // Your implementation for updating a caller
-            // After updating, call loadData to refresh the table
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a caller to update.", "No Caller Selected", JOptionPane.WARNING_MESSAGE);
+        JPanel panel = new JPanel(new GridLayout(0, 2));
+        panel.add(new JLabel("Name:"));
+        panel.add(nameField);
+        panel.add(new JLabel("Department:"));
+        panel.add(departmentField);
+        panel.add(new JLabel("Contact Info:"));
+        panel.add(contactInfoField);
+        panel.add(new JLabel("Address:"));
+        panel.add(addressField);
+        panel.add(new JLabel("Account Number:"));
+        panel.add(accountNumberField);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Add New Caller", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            try {
+                int accountNumber = Integer.parseInt(accountNumberField.getText().trim());
+                Caller newCaller = new Caller(nameField.getText().trim(), departmentField.getText().trim(), contactInfoField.getText().trim(), addressField.getText().trim(), accountNumber);
+                callerDAO.addCaller(newCaller);
+                JOptionPane.showMessageDialog(this, "Caller added successfully.");
+                loadData(); // Refresh table data
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Account number must be a valid number.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error adding caller: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
-    private void deleteCallerAction(ActionEvent event) {
-        int selectedRow = callerTable.getSelectedRow();
-        if (selectedRow >= 0) {
-            Integer callerId = (Integer) tableModel.getValueAt(selectedRow, 0);
-            int confirmation = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this caller?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
-            if (confirmation == JOptionPane.YES_OPTION) {
-                // Your implementation for deleting a caller
-                // After deleting, call loadData to refresh the table
+
+    private void updateCallerAction(ActionEvent e) {
+        int selectedRow = table.getSelectedRow();
+        if (selectedRow != -1) {
+            int id = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+            String name = model.getValueAt(selectedRow, 1).toString();
+            String department = model.getValueAt(selectedRow, 2).toString();
+            String contactInfo = model.getValueAt(selectedRow, 3).toString();
+            String address = model.getValueAt(selectedRow, 4).toString();
+            int accountNumber = Integer.parseInt(model.getValueAt(selectedRow, 5).toString());
+
+            JTextField nameField = new JTextField(name);
+            JTextField departmentField = new JTextField(department);
+            JTextField contactInfoField = new JTextField(contactInfo);
+            JTextField addressField = new JTextField(address);
+            JTextField accountNumberField = new JTextField(String.valueOf(accountNumber));
+
+            JPanel panel = new JPanel(new GridLayout(0, 2));
+            panel.add(new JLabel("Name:"));
+            panel.add(nameField);
+            panel.add(new JLabel("Department:"));
+            panel.add(departmentField);
+            panel.add(new JLabel("Contact Info:"));
+            panel.add(contactInfoField);
+            panel.add(new JLabel("Address:"));
+            panel.add(addressField);
+            panel.add(new JLabel("Account Number:"));
+            panel.add(accountNumberField);
+
+            int result = JOptionPane.showConfirmDialog(null, panel, "Update Caller", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (result == JOptionPane.OK_OPTION) {
+                Caller updatedCaller = new Caller(nameField.getText(), departmentField.getText(), contactInfoField.getText(), addressField.getText(), Integer.parseInt(accountNumberField.getText()));
+                updatedCaller.setCallerId(id);
+                try {
+                    callerDAO.updateCaller(updatedCaller);
+                    JOptionPane.showMessageDialog(this, "Caller updated successfully.");
+                    loadData(); // Refresh table data
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error updating caller: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Please select a caller to delete.", "No Caller Selected", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Select a caller to update.", "No Caller Selected", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+
+    private void deleteCallerAction(ActionEvent e) {
+        int selectedRow = table.getSelectedRow();
+        if (selectedRow != -1) {
+            int confirm = JOptionPane.showConfirmDialog(this, "Delete this caller?", "Confirm", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                int id = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+                try {
+                    callerDAO.deleteCaller(id);
+                    loadData(); // Refresh table data
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error deleting caller: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Select a caller to delete.");
         }
     }
 }
