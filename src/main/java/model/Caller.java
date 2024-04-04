@@ -1,14 +1,13 @@
 package model;
 
 public class Caller {
-    private int callerId;
+    private int callerId; // Managed by the database
     private String name;
     private String department;
     private String contactInfo;
     private String address;
     private int accountNumber;
 
-    // Constructor for creating a new Caller object without an ID (for insertion)
     public Caller(String name, String department, String contactInfo, String address, int accountNumber) {
         this.name = name;
         this.department = department;
@@ -17,61 +16,20 @@ public class Caller {
         this.accountNumber = accountNumber;
     }
 
-    // Constructor including ID (for retrieval)
-    public Caller(int callerId, String name, String department, String contactInfo, String address, int accountNumber) {
-        this(name, department, contactInfo, address, accountNumber);
-        this.callerId = callerId;
-    }
+    // Getters and Setters
 
-    // Getters
-    public int getCallerId() {
-        return callerId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public String getContactInfo() {
-        return contactInfo;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    // Setters
-    public void setCallerId(int callerId) {
-        this.callerId = callerId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
-    }
+    public int getCallerId() { return callerId; }
+    public void setCallerId(int callerId) { this.callerId = callerId; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getDepartment() { return department; }
+    public void setDepartment(String department) { this.department = department; }
+    public String getContactInfo() { return contactInfo; }
+    public void setContactInfo(String contactInfo) { this.contactInfo = contactInfo; }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+    public int getAccountNumber() { return accountNumber; }
+    public void setAccountNumber(int accountNumber) { this.accountNumber = accountNumber; }
 
     @Override
     public String toString() {

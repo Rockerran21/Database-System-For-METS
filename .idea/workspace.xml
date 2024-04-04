@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="557cd822-0b1a-441f-b9d0-a751a90d3278" name="Changes" comment="Added New Files to the Repo">
+    <list default="true" id="557cd822-0b1a-441f-b9d0-a751a90d3278" name="Changes" comment="Added OverRid sections to Equipment and Specialist">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ApplicationMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/CallerPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/EquipmentPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/SpecialistPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/dao/CallerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/dao/CallerDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/dao/EquipmentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/dao/EquipmentDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/dao/SpecialistDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/dao/SpecialistDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/model/Caller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/model/Caller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/model/Equipment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/model/Equipment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/model/Specialist.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/model/Specialist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CallerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CallerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EquipmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EquipmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/SpecialistDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/SpecialistDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Caller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Caller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Equipment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Specialist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Specialist.java" afterDir="false" />
     </list>
@@ -87,7 +104,7 @@
       <workItem from="1712037435319" duration="601000" />
       <workItem from="1712217034295" duration="1305000" />
       <workItem from="1712219136890" duration="509000" />
-      <workItem from="1712219694596" duration="6832000" />
+      <workItem from="1712219694596" duration="10588000" />
     </task>
     <task id="LOCAL-00001" summary="Added New Files to the Repo">
       <option name="closed" value="true" />
@@ -97,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712227959561</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added OverRid sections to Equipment and Specialist">
+      <option name="closed" value="true" />
+      <created>1712228356461</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712228356461</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +131,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added New Files to the Repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added New Files to the Repo" />
+    <MESSAGE value="Added OverRid sections to Equipment and Specialist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added OverRid sections to Equipment and Specialist" />
   </component>
 </project>

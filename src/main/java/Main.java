@@ -4,16 +4,25 @@ import dao.SpecialistDAO;
 import model.Caller;
 import model.Equipment;
 import model.Specialist;
-
+import javax.swing.SwingUtilities;
 import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        testDatabaseOperations(); // This method will handle the testing of your database operations
+
+        // Initialize and display your application's UI
+        SwingUtilities.invokeLater(() -> {
+            ApplicationMain mainFrame = new ApplicationMain();
+            mainFrame.setVisible(true);
+        });
+    }
+
+    private static void testDatabaseOperations() {
         CallerDAO callerDAO = new CallerDAO();
         EquipmentDAO equipmentDAO = new EquipmentDAO();
         SpecialistDAO specialistDAO = new SpecialistDAO();
-
         try {
             // Testing Caller operations
             Caller newCaller = new Caller("New Caller", "Sales", "newcaller@example.com", "1234 Main St", 56789);
@@ -26,7 +35,6 @@ public class Main {
                 System.out.println(caller);
             }
 
-            // Assume ID generation is handled by the database, hence not included in constructor
             // Testing Equipment operations
             Equipment newEquipment = new Equipment("Printer", "HP", "LaserJet Pro 400");
             equipmentDAO.addEquipment(newEquipment);
@@ -49,12 +57,7 @@ public class Main {
                 System.out.println(specialist);
             }
 
-            // Example update and delete operations
-            // Note: Update these operations with actual IDs and data you want to test with
-            // equipmentDAO.updateEquipment(new Equipment(1, "UpdatedType", "UpdatedMake", "UpdatedModel"));
-            // equipmentDAO.deleteEquipment(1);
-            // specialistDAO.updateSpecialist(new Specialist(1, "UpdatedName", "UpdatedExpertise"));
-            // specialistDAO.deleteSpecialist(1);
+            // Example update and delete operations here
 
         } catch (SQLException e) {
             e.printStackTrace();
