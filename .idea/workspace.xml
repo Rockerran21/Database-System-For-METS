@@ -4,27 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="557cd822-0b1a-441f-b9d0-a751a90d3278" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/java.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database System for Mets.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-j-8.3.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/CallerDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/CallerDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/EquipmentDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/SpecialistDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Caller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Caller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Equipment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Specialist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/DatabaseUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/DatabaseUtil.java" afterDir="false" />
+    <list default="true" id="557cd822-0b1a-441f-b9d0-a751a90d3278" name="Changes" comment="Added New Files to the Repo">
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EquipmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EquipmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/SpecialistDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/SpecialistDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Equipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Specialist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Specialist.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,8 +89,17 @@
       <workItem from="1712037435319" duration="601000" />
       <workItem from="1712217034295" duration="1305000" />
       <workItem from="1712219136890" duration="509000" />
-      <workItem from="1712219694596" duration="6391000" />
+      <workItem from="1712219694596" duration="6643000" />
     </task>
+    <task id="LOCAL-00001" summary="Added New Files to the Repo">
+      <option name="closed" value="true" />
+      <created>1712227959561</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712227959561</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,5 +107,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Added New Files to the Repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added New Files to the Repo" />
   </component>
 </project>
