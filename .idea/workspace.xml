@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="557cd822-0b1a-441f-b9d0-a751a90d3278" name="Changes" comment="Added New Files to the Repo">
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EquipmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EquipmentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/SpecialistDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/SpecialistDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Equipment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Specialist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Specialist.java" afterDir="false" />
     </list>
@@ -89,7 +87,7 @@
       <workItem from="1712037435319" duration="601000" />
       <workItem from="1712217034295" duration="1305000" />
       <workItem from="1712219136890" duration="509000" />
-      <workItem from="1712219694596" duration="6643000" />
+      <workItem from="1712219694596" duration="6832000" />
     </task>
     <task id="LOCAL-00001" summary="Added New Files to the Repo">
       <option name="closed" value="true" />

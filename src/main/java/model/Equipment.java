@@ -22,4 +22,15 @@ public class Equipment {
     public void setMake(String make) { this.make = make; }
     public String getModel() { return model; }
     public void setModel(String model) { this.model = model; }
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "equipmentId=" + equipmentId +
+                ", type='" + type + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                '}';
+    }
+
 }
+

@@ -18,4 +18,13 @@ public class Specialist {
     public void setName(String name) { this.name = name; }
     public String getExpertiseArea() { return expertiseArea; }
     public void setExpertiseArea(String expertiseArea) { this.expertiseArea = expertiseArea; }
+    @Override
+    public String toString() {
+        return "Specialist{" +
+                "specialistId=" + specialistId +
+                ", name='" + name + '\'' +
+                ", expertiseArea='" + expertiseArea + '\'' +
+                '}';
+    }
 }
+
