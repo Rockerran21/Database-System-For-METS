@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="557cd822-0b1a-441f-b9d0-a751a90d3278" name="Changes" comment="Added UI Elements and updated few bugs">
-      <change afterPath="$PROJECT_DIR$/Welcome.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/ProblemDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/ProblemDetailsDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/ProblemResolutionDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Problem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ProblemDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ProblemResolution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/ApplicationMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ApplicationMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ApplicationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ApplicationMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +108,7 @@
       <workItem from="1712219136890" duration="509000" />
       <workItem from="1712219694596" duration="15962000" />
       <workItem from="1712386234435" duration="491000" />
-      <workItem from="1712386771386" duration="4258000" />
+      <workItem from="1712386771386" duration="5636000" />
     </task>
     <task id="LOCAL-00001" summary="Added New Files to the Repo">
       <option name="closed" value="true" />
@@ -141,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712244310581</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added UI Elements and updated few bugs">
+      <option name="closed" value="true" />
+      <created>1712391086745</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712391086745</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +161,7 @@
     <MESSAGE value="Added New Files to the Repo" />
     <MESSAGE value="Added OverRid sections to Equipment and Specialist" />
     <MESSAGE value="Added UI Files" />
+    <MESSAGE value="Merged the codes together&#10;Merge branch 'main' of https://github.com/Rockerran21/Database-System-For-METS" />
     <MESSAGE value="Added UI Elements and updated few bugs" />
     <option name="LAST_COMMIT_MESSAGE" value="Added UI Elements and updated few bugs" />
   </component>
