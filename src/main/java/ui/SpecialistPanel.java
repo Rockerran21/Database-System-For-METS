@@ -8,6 +8,10 @@ import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.DocumentEvent;
+
 
 
 public class SpecialistPanel extends JPanel {
@@ -16,9 +20,13 @@ public class SpecialistPanel extends JPanel {
     private JScrollPane scrollPane;
     private DefaultTableModel tableModel;
 
+    private JTextField searchField; // For search bar
+    private TableRowSorter<DefaultTableModel> rowSorter;
+
     public SpecialistPanel() {
         specialistDAO = new SpecialistDAO();
         initializeUI();
+        initializeSearch();
         loadData();
     }
 
@@ -30,6 +38,9 @@ public class SpecialistPanel extends JPanel {
         specialistTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(specialistTable);
         add(scrollPane, BorderLayout.CENTER);
+
+        rowSorter = new TableRowSorter<>(tableModel);
+        specialistTable.setRowSorter(rowSorter);
 
         JPanel buttonsPanel = new JPanel();
         JButton addButton = new JButton("Add");
@@ -58,6 +69,57 @@ public class SpecialistPanel extends JPanel {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error loading specialists: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void initializeSearch() {
+        JPanel searchPanel = new JPanel(new BorderLayout());
+        searchField = new JTextField();
+        JButton searchButton = new JButton("Search");
+
+        searchPanel.add(new JLabel("Search by Name/Expertise: "), BorderLayout.WEST);
+        searchPanel.add(searchField, BorderLayout.CENTER);
+        searchPanel.add(searchButton, BorderLayout.EAST);
+
+        add(searchPanel, BorderLayout.NORTH);
+
+        rowSorter = new TableRowSorter<>(tableModel);
+        specialistTable.setRowSorter(rowSorter);
+
+        searchButton.addActionListener(e -> {
+            String text = searchField.getText();
+            if (text.trim().length() == 0) {
+                rowSorter.setRowFilter(null);
+            } else {
+                rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+            }
+        });
+
+        // Add a document listener to the search field to detect changes
+        searchField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateFilter();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateFilter();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateFilter();
+            }
+
+            private void updateFilter() {
+                String text = searchField.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+        });
     }
 
     private void addSpecialistAction(ActionEvent e) {

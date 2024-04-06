@@ -24,6 +24,28 @@ public class CallerDAO {
             pstmt.executeUpdate();
         }
     }
+    public List<Caller> searchCallersByName(String name) throws SQLException {
+        List<Caller> filteredCallers = new ArrayList<>();
+        String sql = "SELECT * FROM caller WHERE name LIKE ?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, "%" + name + "%");
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Caller caller = new Caller(
+                            rs.getString("name"),
+                            rs.getString("department"),
+                            rs.getString("contact_info"),
+                            rs.getString("address"),
+                            rs.getInt("account_number"));
+                    caller.setCallerId(rs.getInt("caller_id"));
+                    filteredCallers.add(caller);
+                }
+            }
+        }
+        return filteredCallers;
+    }
+
 
     public List<Caller> getAllCallers() throws SQLException {
         List<Caller> callers = new ArrayList<>();

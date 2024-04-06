@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="557cd822-0b1a-441f-b9d0-a751a90d3278" name="Changes" comment="Added UI Files">
+    <list default="true" id="557cd822-0b1a-441f-b9d0-a751a90d3278" name="Changes" comment="Added UI Elements and updated few bugs">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9334e31b-5c60-45b4-9a35-96c255178278.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9334e31b-5c60-45b4-9a35-96c255178278.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/dao/CallerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/dao/CallerDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CallerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CallerDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/CallerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CallerPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/EquipmentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/EquipmentPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/SpecialistPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/SpecialistPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/DatabaseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/DatabaseUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Rockerran21"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Rockerran21/Database-System-For-METS.git",
+    "accountId": "9a10af09-e95b-4b7d-8384-f9519276cb4b"
+  }
+}]]></component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
@@ -54,6 +71,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -73,7 +91,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -89,7 +108,9 @@
       <workItem from="1712037435319" duration="601000" />
       <workItem from="1712217034295" duration="1305000" />
       <workItem from="1712219136890" duration="509000" />
-      <workItem from="1712219694596" duration="14612000" />
+      <workItem from="1712219694596" duration="15962000" />
+      <workItem from="1712386234435" duration="491000" />
+      <workItem from="1712386771386" duration="1512000" />
     </task>
     <task id="LOCAL-00001" summary="Added New Files to the Repo">
       <option name="closed" value="true" />
@@ -115,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712232982647</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added UI Elements and updated few bugs">
+      <option name="closed" value="true" />
+      <created>1712244310581</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712244310581</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +155,7 @@
     <MESSAGE value="Added New Files to the Repo" />
     <MESSAGE value="Added OverRid sections to Equipment and Specialist" />
     <MESSAGE value="Added UI Files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added UI Files" />
+    <MESSAGE value="Added UI Elements and updated few bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added UI Elements and updated few bugs" />
   </component>
 </project>

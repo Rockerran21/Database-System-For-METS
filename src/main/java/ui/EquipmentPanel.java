@@ -9,15 +9,22 @@ import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.DocumentEvent;
+
 
 public class EquipmentPanel extends JPanel {
     private EquipmentDAO equipmentDAO;
     private JTable equipmentTable;
     private DefaultTableModel tableModel;
+    private JTextField searchField; // For search bar
+    private TableRowSorter<DefaultTableModel> rowSorter;
 
     public EquipmentPanel() {
         equipmentDAO = new EquipmentDAO();
         initializeUI();
+        initializeSearch();
         loadData();
     }
 
@@ -28,6 +35,9 @@ public class EquipmentPanel extends JPanel {
         tableModel.setColumnIdentifiers(new String[]{"ID", "Type", "Make", "Model"});
         equipmentTable = new JTable(tableModel);
         add(new JScrollPane(equipmentTable), BorderLayout.CENTER);
+
+        rowSorter = new TableRowSorter<>(tableModel);
+        equipmentTable.setRowSorter(rowSorter);
 
         JPanel buttonsPanel = new JPanel();
         JButton addButton = new JButton("Add");
@@ -57,6 +67,53 @@ public class EquipmentPanel extends JPanel {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error loading equipment: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    private void initializeSearch() {
+        JPanel searchPanel = new JPanel(new BorderLayout());
+        searchField = new JTextField();
+        JButton searchButton = new JButton("Search");
+
+        searchPanel.add(new JLabel("Search by Type/Make/Model: "), BorderLayout.WEST);
+        searchPanel.add(searchField, BorderLayout.CENTER);
+        searchPanel.add(searchButton, BorderLayout.EAST);
+
+        add(searchPanel, BorderLayout.NORTH);
+
+        searchButton.addActionListener(e -> {
+            String text = searchField.getText();
+            if (text.trim().length() == 0) {
+                rowSorter.setRowFilter(null);
+            } else {
+                rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text)); // The regexFilter is case insensitive
+            }
+        });
+
+        // Add a document listener to the search field to detect changes
+        searchField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateFilter();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateFilter();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateFilter();
+            }
+
+            private void updateFilter() {
+                String text = searchField.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+        });
     }
 
     private void addEquipmentAction(ActionEvent event) {

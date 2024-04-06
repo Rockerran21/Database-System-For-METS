@@ -2,7 +2,6 @@ package ui;
 
 import dao.CallerDAO;
 import model.Caller;
-import util.DatabaseUtil;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,15 +9,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.DocumentEvent;
+
+
+
 
 public class CallerPanel extends JPanel {
-    private CallerDAO callerDAO = new CallerDAO();
+    private CallerDAO callerDAO;
     private JTable table;
     private DefaultTableModel model;
+    private JTextField searchField;
+    private JButton searchButton;
+    private TableRowSorter<DefaultTableModel> rowSorter;
 
     public CallerPanel() {
-        setLayout(new BorderLayout());
         callerDAO = new CallerDAO();
+        setLayout(new BorderLayout());
         initializeUI();
         loadData();
     }
@@ -27,39 +36,86 @@ public class CallerPanel extends JPanel {
         model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"ID", "Name", "Department", "Contact Info", "Address", "Account Number"});
         table = new JTable(model);
-        add(new JScrollPane(table), BorderLayout.CENTER);
+        rowSorter = new TableRowSorter<>(model); // Initialize row sorter
+        table.setRowSorter(rowSorter);
+        add(new JScrollPane(table), BorderLayout.CENTER); // Declare the variable
+
+        JPanel searchPanel = new JPanel();
+        searchField = new JTextField(20);
+        searchButton = new JButton("Search");
+        searchButton.addActionListener(e -> searchCaller());
+        searchPanel.add(new JLabel("Search by Name:"));
+        searchPanel.add(searchField);
+        searchPanel.add(searchButton);
+        add(searchPanel, BorderLayout.NORTH);
 
         JPanel buttonPanel = new JPanel();
         JButton addButton = new JButton("Add User");
-        JButton viewButton = new JButton("View Users");
+        JButton refreshButton = new JButton("Refresh List");
         JButton updateButton = new JButton("Update User");
         JButton deleteButton = new JButton("Delete User");
 
         addButton.addActionListener(this::addCallerAction);
-        viewButton.addActionListener(e -> loadData());
+        refreshButton.addActionListener(e -> loadData());
         updateButton.addActionListener(this::updateCallerAction);
         deleteButton.addActionListener(this::deleteCallerAction);
 
         buttonPanel.add(addButton);
-        buttonPanel.add(viewButton);
+        buttonPanel.add(refreshButton);
         buttonPanel.add(updateButton);
         buttonPanel.add(deleteButton);
-
         add(buttonPanel, BorderLayout.SOUTH);
+        initializeSearch();
+    }
+
+    private void initializeSearch() {
+        JPanel searchPanel = new JPanel(new BorderLayout());
+        searchField = new JTextField();
+        JButton searchButton = new JButton("Search");
+
+        searchPanel.add(new JLabel("Search by Name: "), BorderLayout.WEST);
+        searchPanel.add(searchField, BorderLayout.CENTER);
+        searchPanel.add(searchButton, BorderLayout.EAST);
+
+        add(searchPanel, BorderLayout.NORTH);
+
+        searchButton.addActionListener(e -> searchCaller());
+
+        searchField.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                searchCaller();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                searchCaller();
+            }
+
+            public void changedUpdate(DocumentEvent e) {
+                // Plain text components do not fire these events
+            }
+        });
     }
 
     private void loadData() {
         try {
             List<Caller> callers = callerDAO.getAllCallers();
-            model.setRowCount(0); // Clear existing content
+            model.setRowCount(0);
             for (Caller caller : callers) {
                 model.addRow(new Object[]{
                         caller.getCallerId(), caller.getName(), caller.getDepartment(),
-                        caller.getContactInfo(), caller.getAddress(), caller.getAccountNumber()
-                });
+                        caller.getContactInfo(), caller.getAddress(), caller.getAccountNumber()});
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error loading data: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void searchCaller() {
+        String text = searchField.getText();
+        if (text.trim().length() == 0) {
+            rowSorter.setRowFilter(null);
+        } else {
+            rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
         }
     }
 
@@ -97,6 +153,16 @@ public class CallerPanel extends JPanel {
             }
         }
     }
+    private void updateTableModel(List<Caller> callers) {
+        model.setRowCount(0); // Clear existing content
+        for (Caller caller : callers) {
+            model.addRow(new Object[]{
+                    caller.getCallerId(), caller.getName(), caller.getDepartment(),
+                    caller.getContactInfo(), caller.getAddress(), caller.getAccountNumber()
+            });
+        }
+    }
+
 
 
     private void updateCallerAction(ActionEvent e) {
