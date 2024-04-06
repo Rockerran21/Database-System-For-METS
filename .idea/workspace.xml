@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="557cd822-0b1a-441f-b9d0-a751a90d3278" name="Changes" comment="Added UI Elements and updated few bugs">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9334e31b-5c60-45b4-9a35-96c255178278.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9334e31b-5c60-45b4-9a35-96c255178278.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Welcome.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/dao/CallerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/dao/CallerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CallerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CallerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/CallerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CallerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/EquipmentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/EquipmentPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/SpecialistPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/SpecialistPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/DatabaseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/DatabaseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ApplicationMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ApplicationMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ApplicationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ApplicationMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +107,7 @@
       <workItem from="1712219136890" duration="509000" />
       <workItem from="1712219694596" duration="15962000" />
       <workItem from="1712386234435" duration="491000" />
-      <workItem from="1712386771386" duration="1512000" />
+      <workItem from="1712386771386" duration="4258000" />
     </task>
     <task id="LOCAL-00001" summary="Added New Files to the Repo">
       <option name="closed" value="true" />

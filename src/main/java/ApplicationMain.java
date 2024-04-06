@@ -4,10 +4,9 @@ import ui.CallerPanel;
 import ui.EquipmentPanel;
 import ui.SpecialistPanel;
 
-
 public class ApplicationMain extends JFrame {
     public ApplicationMain() {
-        setTitle("CRM System");
+        setTitle("Database Management System for METS Call Center");
         setSize(800, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -26,4 +25,5 @@ public class ApplicationMain extends JFrame {
         // Add tabbedPane to the frame
         add(tabbedPane, BorderLayout.CENTER);
     }
+
 }
